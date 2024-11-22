@@ -8,6 +8,9 @@ var path = require('path')
 
 const app = express()
 
+// Middleware to parse JSON request body
+app.use(express.json());
+
 // Create a write stream (in append mode) to log out requests data in log file
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'ryan_access.log'), { flags: 'a' })
  
@@ -65,9 +68,19 @@ fs.readFile(sqlFilePath, 'utf8', (err, sql) => {
 })
 */ 
 
+// Function to get details of a character in the database
 async function getCharacterDetailsByName(name) {
   const [characters] = await pool.promise().query("SELECT * FROM characters WHERE name = ?", [name]);
   return characters[0]?.details;
+}
+
+// Function to insert a new character into the database
+async function createCharacter(name, details) {
+  const [result] = await pool.promise().query(
+    "INSERT INTO characters (name, details) VALUES (?, ?)",
+    [name, details]
+  );
+  return result;
 }
 
 app.get("/", async (req, res) => {
@@ -81,6 +94,26 @@ app.get("/test", (req, res) => {
 app.get("/character/:name", async(req, res) => {
   const detail = await getCharacterDetailsByName(req.params?.name)
   res.send(`Details of character ${req.params?.name} is: ${detail}`)
+})
+
+app.post("/character/create", async(req, res) => {
+  const { name, details } = req.body;
+
+   // Validate the input
+   if (!name || !details) {
+    return res.status(400).json({ error: "Name and details are required." });
+  }
+
+  try {
+    const result = await createCharacter(name, details);
+    res.status(201).json({
+      message: "Character created successfully",
+      characterId: result.insertId, // Returns the ID of the newly inserted character
+    });
+  } catch (err) {
+    console.error("Error creating character:", err.message);
+    res.status(500).json({ error: "Failed to create character." });
+  }
 })
 
 const quotes = [
