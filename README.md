@@ -79,4 +79,28 @@ A demo project showing how to host a simple Node.js application on EC2 and inter
    ![image](https://github.com/user-attachments/assets/893eddb1-90b4-44b8-8bc3-a4ea37af85b5)
 
 
-  
+6. Testing result:
+
+![image](https://github.com/user-attachments/assets/30337e52-f612-4801-a28b-8cc3cbb340aa)
+
+![image](https://github.com/user-attachments/assets/a7cde774-5513-4566-98d5-36cc31222703)
+
+![image](https://github.com/user-attachments/assets/51b05ad2-6309-4db1-bb40-78cfb3f7bf6a)
+
+![image](https://github.com/user-attachments/assets/634e5c0a-a462-46d8-af35-ebd3557e46be)
+
+![image](https://github.com/user-attachments/assets/680c452c-4880-45a8-893c-ad9ee06ce429)
+
+![image](https://github.com/user-attachments/assets/b6d6df54-1023-49bb-b06e-5f85f258ed24)
+
+![image](https://github.com/user-attachments/assets/d979e15d-4bd5-410c-bbb3-9e4e27c540fc)
+
+![image](https://github.com/user-attachments/assets/aef79fd3-abc4-4472-9dc6-6845a60b3b70)
+
+
+
+
+
+
+
+
