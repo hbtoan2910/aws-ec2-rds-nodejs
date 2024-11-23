@@ -101,9 +101,11 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
 
 ![image](https://github.com/user-attachments/assets/a8559094-f5a2-4281-a889-4b5892e65f02)
 
+Note: we can both send HTTP requests to Public IPv4 Address or Public IPv4 DNS to have same result ^^
 
+Public IPv4 address: 3.95.64.6
 
-
+Public IPv4 DNS: ec2-3-95-64-6.compute-1.amazonaws.com
 
 
 
