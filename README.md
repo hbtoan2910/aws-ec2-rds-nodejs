@@ -10,6 +10,7 @@ A demo project showing how to host a simple Node.js application on EC2 and inter
 
 1. We have a simple NodeJS application running on port 3000 with several APIs (total 4 APIs with GET & 1 API with POST)
 
+
 2. Go to EC2 > Create instance. Remember to add key/pair in order to connect to our instance later. (we have .pem or .ppk file at this step)
   
    Once instance is ready, up and running, we have a Public IPv4 address.
@@ -17,6 +18,7 @@ A demo project showing how to host a simple Node.js application on EC2 and inter
    Note that, once instance is created, it auto creates a VPC (Virtual Private Cloud) & a Subnet
    
    ![image](https://github.com/user-attachments/assets/b0d19f60-6156-4ceb-8beb-401364a57e77)
+
 
 3. We need to connect to our instance. Choose instance > Connect. If we chose Windows OS, we're gonna use RDP Client to connect to our instance
 
@@ -36,16 +38,23 @@ A demo project showing how to host a simple Node.js application on EC2 and inter
 
   Run app using: npm server.js
 
+
 4. Go to Amazon RDS > Create database > in this case I choose Engine MySql community
 
    ![image](https://github.com/user-attachments/assets/a8123256-e41e-4377-9525-0c5e1928c536)
 
-   Then connect this database with our already-created instance
+   Then connect this database with our already-created instance. That's it :)
 
    ![image](https://github.com/user-attachments/assets/0ba4a1cd-7ed6-4e86-8669-5227aead452b)
 
+  Note that, once we run .sql file to create database (lots), table (characters) & popular data in databse ( 2 columns name, details). 
   
-6. If trying to access using Public IPv4 address you will see it failed. Need to do 2 more steps:
+  If you want to see data, install SQL Workbench, connect to this Amazon RDS (Host: Endpoint (ryan-db-01.cf6mmisaixrm.us-east-1.rds.amazonaws.com, port: 3306 ], then run query to see data (use lotr; SELECT * FROM characters;)
+
+  ![image](https://github.com/user-attachments/assets/4d1b47d8-4163-4504-9ab5-2c5a45dbaeab)
+
+  
+5. If trying to access using Public IPv4 address you will see it failed. Need to do 2 more steps:
 
    a / Go to tab Security > Security Groups > Choose > Edit inbound rule > Create rule for port 3000 to allow all connections
 
