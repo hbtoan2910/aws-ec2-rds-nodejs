@@ -79,7 +79,7 @@ A demo project showing how to host a simple Node.js application on EC2 and inter
    ![image](https://github.com/user-attachments/assets/893eddb1-90b4-44b8-8bc3-a4ea37af85b5)
 
 
-6. Testing result:
+6. Testing result with POSTMAN:
 
 ![image](https://github.com/user-attachments/assets/30337e52-f612-4801-a28b-8cc3cbb340aa)
 
@@ -97,6 +97,9 @@ A demo project showing how to host a simple Node.js application on EC2 and inter
 
 ![image](https://github.com/user-attachments/assets/aef79fd3-abc4-4472-9dc6-6845a60b3b70)
 
+We can also write another NodeJS app and use AXIOS to send HTTP requests to our Public IPv4 address to check for the result if you want 😎😗
+
+![image](https://github.com/user-attachments/assets/a8559094-f5a2-4281-a889-4b5892e65f02)
 
 
 
