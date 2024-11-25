@@ -101,11 +101,22 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
 
 ![image](https://github.com/user-attachments/assets/a8559094-f5a2-4281-a889-4b5892e65f02)
 
-Note: we can both send HTTP requests to Public IPv4 Address or Public IPv4 DNS to have same result ^^
+### Note: 
 
-Public IPv4 address: 3.95.64.6
+1/ We can both send HTTP requests to Public IPv4 Address or Public IPv4 DNS to have same result ^^
 
-Public IPv4 DNS: ec2-3-95-64-6.compute-1.amazonaws.com
+   Public IPv4 address: 3.95.64.6
+
+   Public IPv4 DNS: ec2-3-95-64-6.compute-1.amazonaws.com
+
+2/ Instead of start our NodeJS app manually and have to restart once having errors/exceptions, we can use library pm2: install globally then run it
+
+   Before: node server.js
+
+   After: pm2 start server.js --name "aws-ec2-rds-nodejs-app"
+
+   ![image](https://github.com/user-attachments/assets/c6aa1315-1c2c-407d-b5b3-458be31e7214)
+
 
 
 
