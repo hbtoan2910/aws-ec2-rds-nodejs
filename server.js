@@ -87,8 +87,9 @@ app.get("/", async (req, res) => {
   res.send("<h1>HOME PAGE ✌😁😜</h1>")  
 })
 
+//use this as Health Checks for your Load Balancer
 app.get("/test", (req, res) => {
-  res.send("<h1>It's working 🤗</h1>")
+  res.send("<h1>It's working - RyanInstance-01 (Origin) 🤗</h1>")
 })
 
 app.get("/character/:name", async(req, res) => {
@@ -111,7 +112,7 @@ app.post("/character/create", async(req, res) => {
       characterId: result.insertId, // Returns the ID of the newly inserted character
     });
   } catch (err) {
-    console.error("Error creating character:", err.message);
+    console.error("Error creating characcter:", err.message);
     res.status(500).json({ error: "Failed to create character." });
   }
 })
