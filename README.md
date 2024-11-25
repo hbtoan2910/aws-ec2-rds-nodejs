@@ -117,6 +117,10 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
 
    ![image](https://github.com/user-attachments/assets/c6aa1315-1c2c-407d-b5b3-458be31e7214)
 
+   PM2 captures application logs: pm2 logs "aws-ec2-rds-nodejs-app" / pm2 logs --lines 100
 
+
+
+   
 
 
