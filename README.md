@@ -119,8 +119,78 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
 
    PM2 captures application logs: pm2 logs "aws-ec2-rds-nodejs-app" / pm2 logs --lines 100
 
+🔴🔴🔴 We require a solution that can automatically initiate our application after an EC2 instance is rebooted, either planned or unplanned. This will streamline our operations and reduce manual effort.
 
-
+   Follow below steps: 
    
+   npm install -g pm2, it creates a default PM2 home folder (under C:\Users\<username>\.pm2) that will store PM2 relevant files, like logs (yes, the same you see running pm2 logs), process pid or the dump that is created when you run pm2 save. 
+   
+   I recommend to run your PM2 commands and check how files change in that folder.
 
+   Now, we will move that folder to a brand new folder: c:\etc\.pm2
+  
+   Follow these steps:
+   
+   1. Create a new folder c:\etc\.pm2
+   
+   2. Create a new PM2_HOME variable (at System level, not User level) and set the value c:\etc\.pm2
+   
+   3. Close all your open terminal windows (or restart Windows)
+   
+   4. Ensure that your PM2_HOME has been set properly, running echo %PM2_HOME%
+ 
+    pm2 start server.js --name "aws-ec2-rds-nodejs-app"
+    
+    pm2 save -> We need to save the configuration to use later on. Once instance is rebooted,  "pm2 resurrect" will be called (thank to pre-created PM2 service at below step) to start our application based on this saved configuration 😈
 
+    Now we are ready to go though different solutions:
+    
+    a. Using NSSM
+    
+    b. Using pm2-windows-service
+    
+    Both implements shares the same idea: create a Windows Service that, when Windows starts, will take care of starts PM2 (pm2 resurrect) and load a specific PM2 configuration (the one that we saved with pm2 save).
+
+    I chose pm2-windows-service to implement:
+
+    So:
+    
+    0. Before start, did you already setup PM2_HOME and run pm2 save? No?!? It’s definitely time to do that.
+    
+    1. Install Node module
+    
+    npm install -g pm2-windows-service
+    
+    2. As administrator, open command line, run:
+    
+    pm2-service-install -n PM2
+    
+    and set the following:
+    
+    ? Perform environment setup (recommended)? Yes
+    
+    ? Set PM2_HOME? Yes
+    
+    ? PM2_HOME value (this path should be accessible to the service user and should not contain any “user-context” variables [e.g. %APPDATA%]): c:\etc\.pm2\
+    
+    ? Set PM2_SERVICE_SCRIPTS (the list of start-up scripts for pm2)? No 👿 
+    
+    ---> If PM2_SERVICE_SCRIPTS is not set, then the default behaviour is to call "pm2 resurrect" on service startup - when PM2 is running with the list of processes you want launched by the service, use pm2 save to dump the process list, ready for the service to           restore it when it next starts.
+    
+    ? Set PM2_SERVICE_PM2_DIR (the location of the global pm2 to use with the service)? [recommended] Yes
+    
+    ? Specify the directory containing the pm2 version to be used by the service C:\USERS\<USER>\APPDATA\ROAMING\NPM\node_modules\pm2\index.js
+    
+    PM2 service installed and started.
+    
+    This will create a Windows Service called PM2
+
+    ![image](https://github.com/user-attachments/assets/fbaaba00-9644-47e0-9676-bd20c83a6b77)
+
+    To test:
+    
+    1. Restart Windows
+    
+    2. Just after restart, open command prompt (as Administrator) and run: pm2 status → our application is running ;)
+    
+    Reference link: https://blog.cloudboost.io/nodejs-pm2-startup-on-windows-db0906328d75
