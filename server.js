@@ -89,7 +89,7 @@ app.get("/", async (req, res) => {
 
 //use this as Health Checks for your Load Balancer
 app.get("/test", (req, res) => {
-  res.send("<h1>It's working - RyanInstance-01 (Origin) 🤗</h1>")
+  res.send("<h1>It's working - RyanInstance 01 (Origin) 🤗</h1>")
 })
 
 app.get("/character/:name", async(req, res) => {
