@@ -119,7 +119,7 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
 
    PM2 captures application logs: pm2 logs "aws-ec2-rds-nodejs-app" / pm2 logs --lines 100
 
-3/ We require a solution that can automatically initiate our application after an EC2 instance is rebooted, either planned or unplanned. This will streamline our operations and reduce manual effort.
+🔴🔴🔴 We require a solution that can automatically initiate our application after an EC2 instance is rebooted, either planned or unplanned. This will streamline our operations and reduce manual effort.
 
    Follow below steps: 
    
