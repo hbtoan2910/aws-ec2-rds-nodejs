@@ -191,6 +191,6 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
     
     1. Restart Windows
     
-    2. Just after restart, open command prompt (as Administrator) and run: pm2 status → our application is running ;)
+    2. Just after restart, open command prompt (🔴as Administrator) and run: pm2 status → our application is running ;)
     
     Reference link: https://blog.cloudboost.io/nodejs-pm2-startup-on-windows-db0906328d75
