@@ -123,7 +123,7 @@ We can also write another NodeJS app and use AXIOS to send HTTP requests to our 
 
    Follow below steps: 
    
-   npm install -g pm2, it creates a default PM2 home folder (under C:\Users\<username>\.pm2) that will store PM2 relevant files, like logs (yes, the same you see running pm2 logs), process pid or the dump that is created when you run pm2 save. 
+   npm install -g pm2, it creates a default PM2 home folder (under C:\Users\<username>'\.pm2) that will store PM2 relevant files, like logs (yes, the same you see running pm2 logs), process pid or the dump that is created when you run pm2 save. 
    
    I recommend to run your PM2 commands and check how files change in that folder.
 
